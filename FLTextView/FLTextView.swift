@@ -41,7 +41,7 @@ open class FLTextView: UITextView {
     /// If you want to apply the color to only a portion of the placeholder,
     /// you must create a new attributed string with the desired style information 
     /// and assign it to the attributedPlaceholder property.
-    @IBInspectable open var placeholderTextColor: UIColor? {
+    @IBInspectable public var placeholderTextColor: UIColor? {
         get {
             return placeholderView.textColor
         }
@@ -51,7 +51,7 @@ open class FLTextView: UITextView {
     }
     
     /// The string that is displayed when there is no other text in the text view.
-    @IBInspectable open var placeholder: String? {
+    @IBInspectable public var placeholder: String? {
         get {
             return placeholderView.text
         }
@@ -67,10 +67,10 @@ open class FLTextView: UITextView {
     /// only when the user starts typing in the text view. 
     
     /// Default value is `false`
-    @IBInspectable open var hidesPlaceholderWhenEditingBegins: Bool = false
+    @IBInspectable public var hidesPlaceholderWhenEditingBegins: Bool = false
     
     /// The styled string that is displayed when there is no other text in the text view.
-    open var attributedPlaceholder: NSAttributedString? {
+    public var attributedPlaceholder: NSAttributedString? {
         get {
             return placeholderView.attributedText
         }
@@ -81,7 +81,7 @@ open class FLTextView: UITextView {
     }
     
     /// Returns true if the placeholder is currently showing.
-    open var isShowingPlaceholder: Bool {
+    public var isShowingPlaceholder: Bool {
         return placeholderView.superview != nil
     }
     
@@ -167,7 +167,7 @@ open class FLTextView: UITextView {
     
     open override var intrinsicContentSize: CGSize {
         if isShowingPlaceholder {
-            return placeholderSize()
+            return placeholderSize
         }
         return super.intrinsicContentSize
     }
@@ -213,8 +213,8 @@ open class FLTextView: UITextView {
     
     private func resizePlaceholderView() {
         if isShowingPlaceholder {
-            let size = placeholderSize()
-            let frame = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
+            let size = placeholderSize
+            let frame = placeholderFrame
             
             if !placeholderView.frame.equalTo(frame) {
                 placeholderView.frame = frame
@@ -227,10 +227,15 @@ open class FLTextView: UITextView {
         }
     }
     
-    private func placeholderSize() -> CGSize {
+    public var placeholderSize: CGSize {
         var maxSize = self.bounds.size
         maxSize.height = CGFloat.greatestFiniteMagnitude
         return placeholderView.sizeThatFits(maxSize)
+    }
+    
+    open var placeholderFrame: CGRect {
+        let size = placeholderSize
+        return CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
     }
 
 }
