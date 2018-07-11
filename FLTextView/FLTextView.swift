@@ -119,12 +119,12 @@ open class FLTextView: UITextView {
     
     // MARK: - Initialization
     
-    required open init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupPlaceholderView()
     }
     
-    override open init(frame: CGRect, textContainer: NSTextContainer?) {
+    override public init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         setupPlaceholderView()
     }
