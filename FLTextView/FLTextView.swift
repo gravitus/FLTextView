@@ -27,7 +27,7 @@
 import UIKit
 
 @objc(FLTextView)
-public class FLTextView: UITextView {
+open class FLTextView: UITextView {
     
     // MARK: - Private Properties
     
@@ -41,7 +41,7 @@ public class FLTextView: UITextView {
     /// If you want to apply the color to only a portion of the placeholder,
     /// you must create a new attributed string with the desired style information 
     /// and assign it to the attributedPlaceholder property.
-    @IBInspectable public var placeholderTextColor: UIColor? {
+    @IBInspectable open var placeholderTextColor: UIColor? {
         get {
             return placeholderView.textColor
         }
@@ -51,7 +51,7 @@ public class FLTextView: UITextView {
     }
     
     /// The string that is displayed when there is no other text in the text view.
-    @IBInspectable public var placeholder: String? {
+    @IBInspectable open var placeholder: String? {
         get {
             return placeholderView.text
         }
@@ -67,10 +67,10 @@ public class FLTextView: UITextView {
     /// only when the user starts typing in the text view. 
     
     /// Default value is `false`
-    @IBInspectable public var hidesPlaceholderWhenEditingBegins: Bool = false
+    @IBInspectable open var hidesPlaceholderWhenEditingBegins: Bool = false
     
     /// The styled string that is displayed when there is no other text in the text view.
-    public var attributedPlaceholder: NSAttributedString? {
+    open var attributedPlaceholder: NSAttributedString? {
         get {
             return placeholderView.attributedText
         }
@@ -81,37 +81,37 @@ public class FLTextView: UITextView {
     }
     
     /// Returns true if the placeholder is currently showing.
-    public var isShowingPlaceholder: Bool {
+    open var isShowingPlaceholder: Bool {
         return placeholderView.superview != nil
     }
     
     // MARK: - Observed Properties
     
-    override public var text: String! {
+    override open var text: String! {
         didSet {
             showPlaceholderViewIfNeeded()
         }
     }
     
-    override public var attributedText: NSAttributedString! {
+    override open var attributedText: NSAttributedString! {
         didSet {
             showPlaceholderViewIfNeeded()
         }
     }
     
-    override public var font: UIFont? {
+    override open var font: UIFont? {
         didSet {
             placeholderView.font = font
         }
     }
     
-    override public var textAlignment: NSTextAlignment {
+    override open var textAlignment: NSTextAlignment {
         didSet {
             placeholderView.textAlignment = textAlignment
         }
     }
     
-    override public var textContainerInset: UIEdgeInsets {
+    override open var textContainerInset: UIEdgeInsets {
         didSet {
             placeholderView.textContainerInset = textContainerInset
         }
@@ -119,12 +119,12 @@ public class FLTextView: UITextView {
     
     // MARK: - Initialization
     
-    required public init?(coder aDecoder: NSCoder) {
+    required open init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupPlaceholderView()
     }
     
-    override public init(frame: CGRect, textContainer: NSTextContainer?) {
+    override open init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         setupPlaceholderView()
     }
@@ -160,12 +160,12 @@ public class FLTextView: UITextView {
     
     // MARK: - UIView
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         resizePlaceholderView()
     }
     
-    public override var intrinsicContentSize: CGSize {
+    open override var intrinsicContentSize: CGSize {
         if isShowingPlaceholder {
             return placeholderSize()
         }
