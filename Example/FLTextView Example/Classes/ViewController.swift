@@ -34,9 +34,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let placeholder = NSMutableAttributedString(string: "No excuses")
-        placeholder.addAttribute(NSForegroundColorAttributeName, value: UIColor(white: 0.7, alpha: 1.0), range: NSMakeRange(0, 10))
-        placeholder.addAttribute(NSStrikethroughStyleAttributeName, value: NSUnderlineStyle.styleDouble.rawValue, range: NSMakeRange(3, 7))
-        placeholder.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, 2))
+        placeholder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(white: 0.7, alpha: 1.0), range: NSMakeRange(0, 10))
+        placeholder.addAttribute(NSAttributedStringKey.strikethroughColor, value: NSUnderlineStyle.styleDouble.rawValue, range: NSMakeRange(3, 7))
+        placeholder.addAttribute(NSAttributedStringKey.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSMakeRange(0, 2))
         
         textView.attributedPlaceholder = placeholder
     }

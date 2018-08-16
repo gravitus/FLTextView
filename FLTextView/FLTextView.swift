@@ -136,11 +136,11 @@ open class FLTextView: UITextView {
     
     // MARK: - Notification
     
-    func textDidChange(notification: NSNotification) {
+    @objc func textDidChange(notification: NSNotification) {
         showPlaceholderViewIfNeeded()
     }
     
-    func textViewDidBeginEditing(notification: NSNotification) {
+    @objc func textViewDidBeginEditing(notification: NSNotification) {
         if hidesPlaceholderWhenEditingBegins && isShowingPlaceholder {
             placeholderView.removeFromSuperview()
             invalidateIntrinsicContentSize()
@@ -148,7 +148,7 @@ open class FLTextView: UITextView {
         }
     }
     
-    func textViewDidEndEditing(notification: NSNotification) {
+    @objc func textViewDidEndEditing(notification: NSNotification) {
         if hidesPlaceholderWhenEditingBegins {
             if !isShowingPlaceholder && (text == nil || text.isEmpty) {
                 addSubview(placeholderView)
